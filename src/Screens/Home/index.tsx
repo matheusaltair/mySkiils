@@ -6,7 +6,8 @@ import {
   Text,
   TextInput,
   View,
-  Image
+  Image,
+  Alert
 } from 'react-native';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
@@ -14,8 +15,8 @@ import skillsImage from '../../assets/images/skillsImage.png';
 import { FlatList } from 'react-native-gesture-handler';
 
 interface SkillData {
-  id: String,
-  name: String
+  id: string,
+  name: string
 }
 
 const Home = ({ route }: any) => {
@@ -50,6 +51,22 @@ const Home = ({ route }: any) => {
     setMySkills([...mySkills, data])
   }
 
+  const handleRemoveSkill = (id: string) => {
+    Alert.alert('Remove', 'Are you sure you want to remove the Skill?', [
+      {
+        text: 'No',
+        onPress: () => console.log('no'),
+        style: 'cancel',
+      },
+      {
+        text: 'Yes', onPress: () => setMySkills(mySkills.filter(
+          skill => skill.id !== id
+        ))
+      },
+    ]);
+
+  }
+
   return (
     <>
       <SafeAreaView style={styles.background}>
@@ -57,7 +74,7 @@ const Home = ({ route }: any) => {
           <Text style={styles.H1}>Welcome, {name}</Text>
           <Text style={styles.H4}>{greeting}</Text>
           <TextInput value={newSkills} onChangeText={setNewSkills} style={styles.input} placeholder='Enter a Skill' />
-          <Button text='Add' onPress={handleAddSkills} />
+          <Button title='Add' onPress={handleAddSkills} />
 
           <Text style={styles.H3}>My Skills</Text>
           {!noSkills ?
@@ -66,7 +83,7 @@ const Home = ({ route }: any) => {
               data={mySkills}
               keyExtractor={item => item.id}
               renderItem={({ item }) => (
-                <Card skills={item.name} />
+                <Card skills={item.name} onLongPress={() => handleRemoveSkill(item.id)} />
               )}
             />
             :

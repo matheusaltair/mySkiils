@@ -24,7 +24,7 @@ const InitialScreen = () => {
             </View>
             <TextInput value={name} onChangeText={setName} style={styles.input} placeholder='Pease enter your name' />
           </View>
-          <Button text='Confirm' onPress={() => navigate('Home', { name: name })} />
+          <Button title='Confirm' onPress={() => navigate('Home', { name: name })} />
         </View>
 
       </SafeAreaView>
