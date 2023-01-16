@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -10,34 +10,65 @@ import {
 } from 'react-native';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
-import skillsImage from '../../assets/images/skillsImage.png'
+import skillsImage from '../../assets/images/skillsImage.png';
+import { FlatList } from 'react-native-gesture-handler';
 
-const Home = () => {
+interface SkillData {
+  id: String,
+  name: String
+}
+
+const Home = ({ route }: any) => {
+  console.log(route)
+  const { name } = route.params
   const [newSkills, setNewSkills] = useState('')
-  const [mySkills, setMySkills] = useState([])
+  const [mySkills, setMySkills] = useState<SkillData[]>([])
   const [noSkills, setNoSkills] = useState(true)
+  const [greeting, setGreeting] = useState('')
+
+  useEffect(() => {
+    const currentTime = new Date().getDate()
+
+    if (currentTime < 12) {
+      setGreeting('Good Morning')
+    }
+    else if (currentTime >= 12 && currentTime < 18) {
+      setGreeting('Good afternoon')
+    } else {
+      setGreeting('Good Night')
+    }
+  }, []);
 
   const handleAddSkills = () => {
     setNoSkills(false)
-    setMySkills([...mySkills, newSkills])
+
+    const data = {
+      id: String(new Date().getTime()),
+      name: newSkills
+    }
+
+    setMySkills([...mySkills, data])
   }
 
   return (
     <>
       <SafeAreaView style={styles.background}>
         <View>
-          <Text style={styles.H1}>Welcome, Matheus</Text>
-          <TextInput value={newSkills} onChangeText={setNewSkills} style={styles.input} placeholder='Digite uma Skill' />
+          <Text style={styles.H1}>Welcome, {name}</Text>
+          <Text style={styles.H4}>{greeting}</Text>
+          <TextInput value={newSkills} onChangeText={setNewSkills} style={styles.input} placeholder='Enter a Skill' />
           <Button text='Add' onPress={handleAddSkills} />
 
           <Text style={styles.H3}>My Skills</Text>
           {!noSkills ?
-            <ScrollView showsVerticalScrollIndicator={false}>
-              {mySkills.map(skills => (
-                <Card key={skills} skills={skills} />
-              ))
-              }
-            </ScrollView>
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              data={mySkills}
+              keyExtractor={item => item.id}
+              renderItem={({ item }) => (
+                <Card skills={item.name} />
+              )}
+            />
             :
             <View style={styles.noSkill}>
               <Image source={skillsImage} style={styles.image} />
@@ -58,7 +89,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#121015'
   },
   H1: {
-    fontFamily: 'PTSansNarrow-Bold',
     fontSize: 24,
     fontWeight: 'bold',
     marginTop: 30,
@@ -66,11 +96,10 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   H2: {
-    fontFamily: 'PTSansNarrow-Regular',
     textAlign: 'center',
     fontSize: 24,
     fontWeight: 'bold',
-    marginTop: 30,
+    marginTop: 50,
     color: 'white'
   },
   H3: {
@@ -80,9 +109,11 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     color: 'white'
   },
-  textButton: {
+  H4: {
     fontSize: 13,
-    color: 'white'
+    marginTop: 5,
+    marginLeft: 20,
+    color: 'grey'
   },
   input: {
     borderRadius: 10,
@@ -91,15 +122,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 13,
     backgroundColor: '#1F1E25'
   },
-  button: {
-    marginTop: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
-    padding: 15,
-    marginHorizontal: 20,
-    backgroundColor: '#A370F7'
-  },
   noSkill: {
     height: '50%',
     alignItems: 'center',
@@ -107,7 +129,8 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 130,
-    height: 130
+    height: 130,
+    marginLeft: 30
   }
 });
 

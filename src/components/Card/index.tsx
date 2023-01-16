@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 
-const Card = ({ skills }) => {
+const Card = ({ skills }: any) => {
 
   return (
     <View style={styles.skills}>
