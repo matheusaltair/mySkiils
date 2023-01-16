@@ -3,6 +3,10 @@
 
 <H1>This is an app to add all your skills</H1>
  
+ <div align="center">
+ <img src="https://user-images.githubusercontent.com/64233836/212694494-69d80afd-5940-44af-9bc4-77ef3ebff5c1.png" width="400px" />
+</div>
+ 
 <div align="center">
 <H2>Before add a Skill</H2>
 </div>
