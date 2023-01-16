@@ -24,7 +24,7 @@
 </div>
 
 <div align="center">
-<H2>If you want to delete a skill, just long press!</H2>
+<H2>If you want to delete a skill, just long press in her!</H2>
 </div>
 <div align="center">
  <img src="https://user-images.githubusercontent.com/64233836/212699244-031cc942-13cc-4a03-a99c-321bf21b4619.png" width="300px" />
