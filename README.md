@@ -4,7 +4,7 @@
 <H1>This is an app to add all your skills</H1>
  
  <div align="center">
- <img src="https://user-images.githubusercontent.com/64233836/212694943-8e850575-64cb-4547-9a31-1ad0e3b6cc5d.png" width="400px" />
+ <img src="https://user-images.githubusercontent.com/64233836/212697260-190a0db0-1996-408d-97a5-3082cc54981f.png" width="400px" />
 </div>
  
 <div align="center">
