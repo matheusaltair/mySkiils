@@ -4,7 +4,7 @@
 <H1>This is an app to add all your skills</H1>
  
  <div align="center">
- <img src="https://user-images.githubusercontent.com/64233836/212697260-190a0db0-1996-408d-97a5-3082cc54981f.png" width="400px" />
+ <img src="https://user-images.githubusercontent.com/64233836/212698976-0c50435b-94c7-49a9-b01d-dc0d13180bf7.png" width="400px" />
 </div>
  
 <div align="center">
@@ -12,7 +12,7 @@
 </div>
 
 <div align="center">
- <img src="https://user-images.githubusercontent.com/64233836/212697787-9cd030ac-bfbe-4810-9f17-db115c133270.png" width="400px" />
+ <img src="https://user-images.githubusercontent.com/64233836/212699169-3d25de35-923e-4698-8b08-1f22dfaac49d.png" width="400px" />
 </div>
 
 <div align="center">
@@ -20,5 +20,5 @@
 </div>
 
 <div align="center">
- <img src="https://user-images.githubusercontent.com/64233836/212696640-de575f89-b8d7-4263-98da-8ab4ba47a75f.png" width="400px" />
+ <img src="https://user-images.githubusercontent.com/64233836/212699244-031cc942-13cc-4a03-a99c-321bf21b4619.png" width="400px" />
 </div>
